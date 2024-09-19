@@ -5,26 +5,33 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import org.w3c.dom.Text
 
-class TextSizeAdapter(_context: Context, _numberArray: Array<Int>) : BaseAdapter() {
+class TextSizeAdapter(private val context: Context, private val numbers: Array<Int>) : BaseAdapter() {
 
-   private val context = _context
-   private val numberArray = _numberArray
 
-    override fun getCount(): Int {
-        return numberArray.size
-    }
+    override fun getCount() = numbers.size
 
-    override fun getItem(position: Int): Any {
-        return numberArray[position]
-    }
 
-    override fun getItemId(position: Int): Long {
-        return position.toLong()
-    }
+    override fun getItem(position: Int) = numbers[position]
+
+
+    override fun getItemId(position: Int) = numbers[position].toLong()
+
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        TODO("Not yet implemented")
+        val textView: TextView
+
+        if (convertView != null){
+            textView = convertView as TextView
+            }
+            else{
+            textView = TextView(context)
+
+        }
+        textView.text = numbers[position].toString()
+        textView.textSize = numbers[position].toFloat()
+        return textView
     }
 
 
