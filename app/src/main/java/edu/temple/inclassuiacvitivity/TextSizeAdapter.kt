@@ -12,15 +12,15 @@ class TextSizeAdapter(_context: Context, _numberArray: Array<Int>) : BaseAdapter
    private val numberArray = _numberArray
 
     override fun getCount(): Int {
-        TODO("Not yet implemented")
+        return numberArray.size
     }
 
     override fun getItem(position: Int): Any {
-        TODO("Not yet implemented")
+        return numberArray[position]
     }
 
     override fun getItemId(position: Int): Long {
-        TODO("Not yet implemented")
+        return position.toLong()
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
